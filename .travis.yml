@@ -1,0 +1,10 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker pull brianhicks/multitool
+
+script:
+  - docker run --rm -v $(pwd):/src mantlpkg/multitool build
+  - docker run --rm -v $(pwd):/src mantlpkg/multitool test install
